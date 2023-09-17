@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './BmiCalculator.css'
 const BmiResult = (props) =>{
     const bmiValueCheck = () =>{
         if (props.value < 18.5) {
@@ -12,7 +12,7 @@ const BmiResult = (props) =>{
             return 'Masz otyłość, popracuj nad sobą!';
         };
     };
-    return <div>{`Twoje bmi wynosi: ${props.value}. ${bmiValueCheck()}`}</div>;
+    return <div id='bmi-div'>{`Twoje bmi wynosi: ${props.value}. ${bmiValueCheck()}`}</div>;
 }
 
 export default function BmiCalculator() {
@@ -21,24 +21,28 @@ export default function BmiCalculator() {
     const [isDivShown, setIsDivShown] = useState();
     const bmiValue = (weightValue / (heightValue/100)**2).toFixed(2);
     const handleButtonClick = () =>{
-        setIsDivShown(() => true)
+        setIsDivShown(true)
     }
     return (
-        <div>
-        <span>Waga: </span>
-        <input type="number" name="weight" id="weightInput" onChange={(e)=>handleWeightChange(
-            weightValue = e.target.value,
-            setIsDivShown(() => false)
-            )}/> kg
-        <br/>
-        <span>Wzrost: </span>
-        <input type="number" name="height" id="heightInput" onChange={(e)=>handleHeightChange(
-            heightValue = e.target.value,
-            setIsDivShown(() => false)
-            )}/> cm
-        <br/>
-        <button onClick={handleButtonClick}>Oblicz</button>
-        {weightValue !== '' && heightValue !== '' && isDivShown && <BmiResult value={bmiValue}/>}
+    <div id='main-container'>
+        <div id='rounded-bmi-wrapper'>
+            <div id='weight-div'>
+                <span>Waga: </span>
+                <input type="number" name="weight" id="weightInput" onChange={(e)=>handleWeightChange(
+                    weightValue = e.target.value,
+                    setIsDivShown(false)
+                    )}/> kg
+            </div>
+            <div id="height-div">
+                <span>Wzrost: </span>
+                <input type="number" name="height" id="heightInput" onChange={(e)=>handleHeightChange(
+                    heightValue = e.target.value,
+                    setIsDivShown(false)
+                    )}/> cm
+            </div>
+            <button onClick={handleButtonClick} id='bmi-button'>Oblicz</button>
+            {weightValue !== '' && heightValue !== '' && isDivShown && <BmiResult value={bmiValue}/>}
+        </div>
     </div>
   )
 }

@@ -1,26 +1,25 @@
 import React, { useState } from 'react'
 
 export default function BmiCalculator() {
-    const [weightValue, handleWeightChange] = useState();
-    const [heightValue, handleHeightChange] = useState();
-    let valueOfWeight = weightValue;
-    let valueOfHeight = heightValue;
+    let [genderValue, handleGenderChange] = useState();
+    let [weightValue, handleWeightChange] = useState();
+    let [heightValue, handleHeightChange] = useState();
     const handleButtonClick = () =>{
-        
+        console.log('przycisk dziala')
     }
     return (
     <div>
         <span>Płeć: </span>
-        <input type="radio" name="gender" id="genderInput" />K
-        <input type="radio" name="gender" id="genderInput" />M
+        <input type="radio" name="gender" id="genderInput" onChange={(e)=>{handleGenderChange(genderValue = "female")}} />K
+        <input type="radio" name="gender" id="genderInput" onChange={(e)=>{handleGenderChange(genderValue = "male")}}/>M
         <br/>
         <span>Waga: </span>
-        <input type="number" name="weight" id="weightInput" onChange={(e)=>handleWeightChange(valueOfWeight = e.target.value)}/> kg
+        <input type="number" name="weight" id="weightInput" onChange={(e)=>handleWeightChange(weightValue = e.target.value)}/> kg
         <br/>
         <span>Wzrost: </span>
-        <input type="number" name="height" id="heightInput" onChange={(e)=>handleHeightChange(valueOfHeight = e.target.value)}/> cm
+        <input type="number" name="height" id="heightInput" onChange={(e)=>handleHeightChange(heightValue = e.target.value)}/> cm
         <br/>
-        <button onClick={handleButtonClick()}>Oblicz</button>
+        <button onClick={handleButtonClick}>Oblicz</button>
     </div>
   )
 }

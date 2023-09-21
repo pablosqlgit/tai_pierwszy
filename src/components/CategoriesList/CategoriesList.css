@@ -28,7 +28,9 @@
 @media (max-width: 1350px) {
   .category-list-wrapper {
     grid-column: 1/13;
+    width: 95%;
     justify-content: space-between;
+    justify-self: center;
   }
   .category {
     padding: 0 5px !important;

@@ -1,4 +1,5 @@
 import { React, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './ProductsList.css'
 
 export default function ProductsList(props) {
@@ -15,6 +16,7 @@ export default function ProductsList(props) {
       <img src={product.strMealThumb} />
       <div>
         <p>{product.strMeal}</p>
+        <Link to={`/product/${product.idMeal}`}>See product</Link>
       </div>
     </div>
   ))

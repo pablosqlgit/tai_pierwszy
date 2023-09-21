@@ -1,4 +1,5 @@
 import { useEffect, React, useState, useReducer } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 import './Home.css'
 import CategoriesList from '../CategoriesList/CategoriesList'
 import ProductsList from '../ProductsList/ProductsList'
@@ -26,31 +27,53 @@ function reducer(prev = initialState, action){
 }
 
 export default function Home() {
+  const { search } = useLocation()
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [category, setCategory] = useState('Beef')
 
-  const controller = new AbortController()
-  const signal = controller.signal
+  const currentCategory = search.slice(3)
 
-  const getProducts = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`, { signal })
-    .then(res => res.json())
-    .then(res => dispatch({
-      type: 'setProducts',
-      payload: res.meals
-    }))
-    .catch(err => console.log(err))
+  const getProducts = (which) => {
+    if(which === 'all'){
+      state.categories.forEach(category => {
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}`)
+        .then(res => res.json())
+        .then(res => {
+          const productsArray = state.products
+          res.meals.forEach(meal => {
+            productsArray.push(meal)
+          })
+          dispatch({
+            type: 'setProducts',
+            payload: productsArray
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      })
+    }else{
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${currentCategory}`)
+        .then(res => res.json())
+        .then(res => {
+          dispatch({
+            type: 'setProducts',
+            payload: res.meals
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   }
 
-  // useEffect(() => {
-  //   console.log(state)
-  // }, [state])
-
   useEffect(() => {
-    console.log(controller)
-    getProducts()
-  }, [category])
+    if(!!currentCategory){
+      getProducts(currentCategory)
+    }else{
+      getProducts('all')
+    }
+  }, [state.categories])
 
   useEffect(() => {
     document.title = 'Strona główna'
@@ -72,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div className='recipes-wrapper'>
-        <CategoriesList categories={state.categories} category={category} setCategory={setCategory} />
+        <CategoriesList categories={state.categories} currentCategory={currentCategory} />
         <ProductsList products={state.products} />
       </div>
     </main>

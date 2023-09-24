@@ -5,10 +5,20 @@ const Meal = (props) => {
 
   const { meal } = props
 
+  const recipeIngredientsList = [];
+  for(let i = 1; i< 20;i){
+    if (meal[`strIngredient${i}`] !== "" && meal[`strMeasure${i}`] !== "") {
+      recipeIngredientsList.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`)
+    }
+  }
+  console.log(recipeIngredientsList)
+
   return (
-    <div>
-      {meal.strMeal}
-    </div>
+    <>
+      <div>
+        {meal.strMeal}
+      </div>
+    </>
   )
 }
 

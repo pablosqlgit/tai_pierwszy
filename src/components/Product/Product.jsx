@@ -3,12 +3,9 @@ import { useParams } from 'react-router-dom'
 
 const Meal = (props) => {
   const { meal } = props;
-<<<<<<< HEAD
-=======
   useEffect(() => {
     document.title = meal.strMeal;
   }, []);
->>>>>>> cf08ca48e9a8ece73ff8a4d0b5860b6d12e53110
 
   const showIngredients = () => {
     const measuredIngredients = [];

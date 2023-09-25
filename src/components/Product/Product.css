@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(187, 187, 187);
+}
+#meal-name-wrapper{
+    background: url("../../../public/bg.jpg");
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+#recipe-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -100px;
+}
+#meal-wrapper{
+    padding: 20px;
+    background-color: white;
+    max-width: 1000px;
+}
+#meal-wrapper > img{
+    margin: 20px;
+}
+#ingredients-wrapper{
+    margin: 0 20px;
+    font-size: 20px;
+}

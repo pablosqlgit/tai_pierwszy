@@ -53,3 +53,8 @@
     border-radius: 30px;
     padding: 15px 0;
 }
+@media (max-width:300px){
+    #main-container{
+        min-width:300px;
+    }
+}

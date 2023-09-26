@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import './Product.css'
 
 const Meal = (props) => {
   const { meal } = props;
@@ -13,9 +14,9 @@ const Meal = (props) => {
     while(meal[`strIngredient${x}`]){
         measuredIngredients.push(`${meal[`strIngredient${x}`]} - ${meal[`strMeasure${x++}`]}`);
     };
-    const showedIngredients = measuredIngredients.map((ingredient) => <li>{ingredient}</li>);
+    const showedIngredients = measuredIngredients.map((ingredient) => <li id='ingredients-list-item'>{ingredient}</li>);
     return (
-      <ul>{showedIngredients}</ul>
+      <ul id='ingrefients-list'>{showedIngredients}</ul>
     );
 };
 console.log(meal)
@@ -23,21 +24,35 @@ console.log(meal)
   return (
     <>
       <div id='product-container'>
-        <h1>
-          {meal.strMeal}
-        </h1>
+
+        <div id='meal-name-wrapper'>
+          <h1 id='meal-name'>
+            {meal.strMeal}
+          </h1>
+        </div>
+
         <div id='recipe-wrapper'>
-          <div id='ingredients-wrapper'>
-            <span>Ingredients:</span>
-            {showIngredients()}
+
+          <div id='meal-ingredients-wrapper'>
+            <div id='meal-img-wrapper'>
+              <img src={meal.strMealThumb} id='meal-img'/>
+            </div>
+
+            <div id='ingredients-wrapper'>
+              <span id='ingredients-text'>Ingredients: </span>
+              {showIngredients()}
+            </div>
           </div>
-          <div>
-            <img src={meal.strMealThumb}/>
+
+          <div  id='instruction-wrapper'>
+            <span id='instruction-text'>Instruction: </span>
+              <div id='instruction-div'>
+                {meal.strInstructions}
+              </div>
           </div>
+
         </div>
-        <div id='product-socials-wrapper'>
-          {meal.strInstructions}
-        </div>
+
       </div>
     </>
   );

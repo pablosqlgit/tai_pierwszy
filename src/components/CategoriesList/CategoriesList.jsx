@@ -22,7 +22,7 @@ export default function CategoriesList(props) {
       key={key}
       className="category"
       style={{
-        outline: currentCategory === category.strCategory && "2px solid black",
+        outline: currentCategory === category.strCategory && "1px solid black",
       }}
       onClick={() => handleNavigate(category.strCategory)}
     >

@@ -21,6 +21,7 @@
   width: 20%;
   height: 200px;
 }
+
 .product div {
   text-align: center;
   font-size: 1.3rem;
@@ -28,6 +29,7 @@
   max-height: 30px;
   width: 100%;
 }
+
 .product div p {
   margin: 0;
   height: 100%;
@@ -36,12 +38,12 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .product img {
   position: absolute;
   top: -50px;
   width: 150px;
-} /*# sourceMappingURL=ProductsList.css.map */
-
+} 
 .product-link-button {
   background: hsl(0, 0%, 80%);
   width: 60%;
@@ -61,15 +63,13 @@
     width: 25%;
   }
 }
-
 @media (max-width: 768px) {
   .product {
     width: 40%;
   }
 }
-
 @media (max-width: 560px) {
   .product {
     width: 50%;
   }
-}
+}/*# sourceMappingURL=ProductsList.css.map */

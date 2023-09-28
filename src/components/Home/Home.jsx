@@ -1,5 +1,5 @@
-import { useEffect, React, useState, useReducer } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useEffect, React, useReducer } from "react";
+import { useLocation } from "react-router-dom";
 import "./Home.css";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import ProductsList from "../ProductsList/ProductsList";
@@ -17,22 +17,18 @@ function reducer(prev = initialState, action) {
         ...prev,
         categories: action.payload,
       };
-      break;
     case "setProducts":
       return {
         ...prev,
         products: action.payload,
       };
-      break;
     case "setFiltered":
       return {
         ...prev,
         filtered: action.payload,
       };
-      break;
     default:
       return null;
-      break;
   }
 }
 

@@ -1,10 +1,16 @@
 import { React } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ProductsList.css";
 
 export default function ProductsList(props) {
   const navigate = useNavigate();
+  const { search } = useLocation()
   const { products, filtered } = props;
+
+  const handleNavigate = (where) => {
+    navigate(`/meal/${where}`, { state: search && search.slice(3) })
+    window.location.reload()
+  }
 
   const productsList = products.map((product, key) => (
     <div className="product" key={key}>
@@ -12,7 +18,7 @@ export default function ProductsList(props) {
       <div>
         <p>{product.strMeal}</p>
         <button
-          onClick={() => navigate(`/product/${product.idMeal}`)}
+          onClick={() => handleNavigate(product.idMeal)}
           className="product-link-button"
         >
           See product
@@ -26,8 +32,8 @@ export default function ProductsList(props) {
       {!!productsList[0]
         ? productsList
         : filtered
-        ? "Nie ma takiego dania"
-        : "Wczytywanie..."}
+        ? "No results"
+        : "Loading..."}
     </div>
   );
 }

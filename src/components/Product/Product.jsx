@@ -1,6 +1,6 @@
-import { React, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import './Product.css'
+import { React, useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./Product.css";
 
 const Meal = (props) => {
   const { meal } = props;
@@ -10,49 +10,48 @@ const Meal = (props) => {
 
   const showIngredients = () => {
     const measuredIngredients = [];
-    let x=1;
-    while(meal[`strIngredient${x}`]){
-        measuredIngredients.push(`${meal[`strIngredient${x}`]} - ${meal[`strMeasure${x++}`]}`);
-    };
-    const showedIngredients = measuredIngredients.map((ingredient) => <li id='ingredients-list-item'>{ingredient}</li>);
-    return (
-      <ul id='ingrefients-list'>{showedIngredients}</ul>
-    );
-};
-console.log(meal)
+    let x = 1;
+    while (meal[`strIngredient${x}`]) {
+      measuredIngredients.push(
+        `${meal[`strIngredient${x}`]} - ${meal[`strMeasure${x++}`]}`,
+      );
+    }
+    const showedIngredients = measuredIngredients.map((ingredient) => (
+      <li id="ingredients-list-item">{ingredient}</li>
+    ));
+    return <ul id="ingrefients-list">{showedIngredients}</ul>;
+  };
+  // console.log(meal);
 
   return (
     <>
-      <div id='product-container'>
-
-        <div id='meal-name-wrapper'>
-          <h1 id='meal-name'>
-            {meal.strMeal}
-          </h1>
+      <div id="product-container">
+        <div id="meal-name-wrapper">
+          <h1 id="meal-name">{meal.strMeal}</h1>
         </div>
 
-        <div id='recipe-wrapper'>
-
-          <div id='meal-ingredients-wrapper'>
-            <div id='meal-img-wrapper'>
-              <img src={meal.strMealThumb} id='meal-img'/>
+        <div id="recipe-wrapper">
+          <div id="link-wrapper">
+            <Link to="/" id="link">
+              Back to home
+            </Link>
+          </div>
+          <div id="meal-ingredients-wrapper">
+            <div id="meal-img-wrapper">
+              <img src={meal.strMealThumb} id="meal-img" />
             </div>
 
-            <div id='ingredients-wrapper'>
-              <span id='ingredients-text'>Ingredients: </span>
+            <div id="ingredients-wrapper">
+              <span id="ingredients-text">Ingredients: </span>
               {showIngredients()}
             </div>
           </div>
 
-          <div  id='instruction-wrapper'>
-            <span id='instruction-text'>Instruction: </span>
-              <div id='instruction-div'>
-                {meal.strInstructions}
-              </div>
+          <div id="instruction-wrapper">
+            <span id="instruction-text">Instruction: </span>
+            <div id="instruction-div">{meal.strInstructions}</div>
           </div>
-
         </div>
-
       </div>
     </>
   );

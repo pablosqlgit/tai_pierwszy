@@ -1,0 +1,45 @@
+.error-page {
+  background: rgba(0, 0, 0, 0.473);
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  place-items: center;
+}
+
+.error-page h1 {
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.349);
+}
+
+.error-page-content {
+  padding: 15px;
+  gap: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.error-page-content button {
+  padding: 5px;
+  background: white;
+  border: none;
+  transition: 0.2s;
+  width: 20vw;
+  height: 5vh;
+}
+
+.error-page-content button:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 1200px) {
+  .error-page-content button {
+    width: 15vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .error-page-content button {
+    width: 12vw;
+  }
+}

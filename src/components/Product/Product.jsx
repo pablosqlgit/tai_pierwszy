@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./Product.css";
 
 const Meal = (props) => {
@@ -32,6 +32,11 @@ const Meal = (props) => {
         </div>
 
         <div id="recipe-wrapper">
+          <div id="link-wrapper">
+            <Link to="/" id="link">
+              Back to home
+            </Link>
+          </div>
           <div id="meal-ingredients-wrapper">
             <div id="meal-img-wrapper">
               <img src={meal.strMealThumb} id="meal-img" alt={meal.strMeal} />

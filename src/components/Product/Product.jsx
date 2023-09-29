@@ -1,11 +1,12 @@
 import { React, useEffect, useState } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
-import Loading from '../Loading/Loading'
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import Loading from "../Loading/Loading";
 import "./Product.css";
 
 const Meal = (props) => {
   const { meal } = props;
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = meal.strMeal;
   }, []);
@@ -26,6 +27,10 @@ const Meal = (props) => {
     return <ul id="ingrefients-list">{showedIngredients}</ul>;
   };
 
+  const handleGoHome = () => {
+    !!location.state ? navigate(`/?q=${location.state}`) : navigate("/");
+  };
+
   return (
     <>
       <div id="product-container">
@@ -34,9 +39,9 @@ const Meal = (props) => {
         </div>
 
         <div id="recipe-wrapper">
-          <Link to={location.state ? `/?q=${location.state}` : '/'} id="link">
+          <div id="link" onClick={handleGoHome}>
             Back to home
-          </Link>
+          </div>
           <div id="meal-ingredients-wrapper">
             <div id="meal-img-wrapper">
               <img src={meal.strMealThumb} id="meal-img" alt={meal.strMeal} />

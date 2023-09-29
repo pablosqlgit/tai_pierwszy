@@ -111,6 +111,7 @@ body {
 
 #link:hover {
   transform: translateY(-1px);
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -184,4 +185,4 @@ body {
   #product-container {
     min-width: 300px;
   }
-}/*# sourceMappingURL=Product.css.map */
+} /*# sourceMappingURL=Product.css.map */

@@ -4,13 +4,13 @@ import "./ProductsList.css";
 
 export default function ProductsList(props) {
   const navigate = useNavigate();
-  const { search } = useLocation()
+  const { search } = useLocation();
   const { products, filtered } = props;
 
   const handleNavigate = (where) => {
-    navigate(`/meal/${where}`, { state: search && search.slice(3) })
-    window.location.reload()
-  }
+    navigate(`/meal/${where}`, { state: search && search.slice(3) });
+    // window.location.reload()
+  };
 
   const productsList = products.map((product, key) => (
     <div className="product" key={key}>

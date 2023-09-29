@@ -29,6 +29,7 @@ const Meal = (props) => {
 
   const handleGoHome = () => {
     !!location.state ? navigate(`/?q=${location.state}`) : navigate("/");
+    window.location.reload();
   };
 
   return (

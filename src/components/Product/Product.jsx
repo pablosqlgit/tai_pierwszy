@@ -9,6 +9,9 @@ const Meal = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     document.title = meal.strMeal;
+    return () => {
+      window.location.reload();
+    };
   }, []);
 
   const showIngredients = () => {
